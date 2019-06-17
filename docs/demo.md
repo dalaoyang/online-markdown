@@ -1,4 +1,4 @@
-## 微信公众号格式化工具
+## 微信公众号格式化工具（本工具参考自程序猿DD）
 
 > 使用微信公众号编辑器有一个十分头疼的问题——粘贴出来的代码，格式错乱，而且特别丑。这块编辑器能够解决这个问题。
 
@@ -6,90 +6,99 @@
 
 ## 我的公众号
 
-![微信公众号](http://blog.didispace.com/css/images/weixin.jpg)
+![微信公众号](https://dalaoyang-prod.oss-cn-beijing.aliyuncs.com/dalaoyang.cn/wechat/dalaoyang_gongzhonghao.jpg)
 
 ## Markdown基础语法
 
-下面是Markdown的常用语法示例，可供参考
 
-### 代码示例
+#### 标题
 
-```javascript
-var OnlineMarkdown = {
-  init: function() {
-    var self = this;
-    self.load().then(function() {
-      self.start()
-    }).fail(function(){
-      self.start();
-    });
-  },
-  start: function() {
-    this.updateOutput();
-  },
-  load: function() {
-    return $.ajax({
-      type: 'GET',
-      url: params.path || './demo.md',
-      dateType: 'text',
-      timeout: 2000
-    }).then(function(data) {
-      $('#input').val(data);
-    });
-  },
-  updateOutput: function () {
-    var val = this.converter.makeHtml($('#input').val());
-    $('#output .wrapper').html(val);
-    PR.prettyPrint();
-  }
-};
+> 语法格式：** '#'+'空格'+'文本' **
 
-OnlineMarkdown.init();
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+
+#### 列表
+
+> 无序列表语法格式：** '-' + '空格' ＋ '文本' **
+
+- 文本一
+- 文本二
+- 文本三
+
+> 有序列表语法格式：** '数字' + '.' + '空格' + '文本' **
+
+1. 文本一
+2. 文本二
+3. 文本三
+
+> 任务列表语法格式：** '-' + '空格' + '[ ]' + '文本' **
+
+- [x] 文本一
+- [ ] 文本二
+- [ ] 文本三
+
+#### 链接和图片
+
+在 Markdown 中插入链接不需要其他按钮，你只需要使用`［显示文本］(链接地址)`这样的格式语法即可。例如：
+[稀土掘金](https://gold.xitu.io)
+插入图片的语法与插入链接的语法很像，只是前面多了一个 `!`.语法如下：
+`![图片的标注](图片链接地址)`
+
+#### 引用
+
+> 语法：** '>'+'空格'+'文本' **
+
+
+例如：
+
+> Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。
+
+#### 代码
+
+如下是代码段的语法：
+
+<pre>
+```编程语言
+ 这是代码段
 ```
----
+</pre>
 
-上面是 `JavaScript`，下面是 `php`：
+例如：
 
-```php
-echo 'hello,world'
-```
-
-### 表格示例
-
-| 品类 | 个数 | 备注 |
-|-----|-----|------|
-| 苹果 | 1   | nice |
-| 橘子 | 2   | job |
-
-
-
----
-
-以上是用的比较多的，还装了几十个使用频度比较低的插件，主要包括 Snippet 和文件高亮配置，可以在这里查看：<https://gist.github.com/barretlee/a5170eb6ca1805f66687063d2e3a4983>，你也可以通过 `Settings Sync` 将这个配置下载下来，id 就是后面半截：`a5170eb6ca1805f66687063d2e3a4983`。
-
-### 在命令行打开 VSC
-
-在安装好 VSC 后，直接配置 `.bash_profile` 或者 `.zshrc` 文件：
-
-```bash
-alias vsc='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code';
-VSC_BIN='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin';
-PATH=$VSC_BIN:$PATH;
-export PATH;
-```
-
-然后让配置生效，在控制台执行：
-
-```bash
-# 如果没有安装 zsh，可能是 ~/.bash_profile
-source ~/.zshrc 
+``` python
+def bubbleSort(alist):
+ for passnum in range(len(alist)-1,0,-1):
+ #print alist,passnum
+ for i in range(passnum):
+ if alist[i]>alist[i+1]:
+ temp = alist[i]
+ alist[i] = alist[i+1]
+ alist[i+1] = temp
+ return alist
 ```
 
-这个时候就可以在全局打开了：
+#### 表格
 
-```bash
-# -a 的意思是不要新开窗口，在当前已经打开的 vsc 中打开文件
-vsc path/to/file.ext -a 
-```
+**Markdown　Extra**　表格语法：
 
-有同学提到，VSC 的面板上搜索 `install` 就可以在命令行安装 `code` 这个命令了，不过我更喜欢使用 `vsc` 来打开文件，这也算是折腾吧 ；）
+项目 | 价格
+-------- | ---
+iPhone | $560
+iPad | $780
+iMac | $1000
+
+可以使用冒号来定义对齐方式：
+
+| 项目 | 价格 | 数量 |
+| :-------- | --------:| :--: |
+| iPhone | 6000 元 | 5 |
+| iPad | 3800 元 | 12 |
+| iMac | 10000 元 | 234 |
+
+
+
